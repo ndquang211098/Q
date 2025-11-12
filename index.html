@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bệnh Viện Long Khánh</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="./favicon/web-app-manifest-512x512.png" />
+  </head>
+  <body>
+    <div class="background-blur">
+      <div class="container">
+        <!-- 🔹 Topbar -->
+        <div class="topbar">
+          <div class="topbar-left">
+            <a href="https://www.facebook.com/bvdkkvlk?locale=vi_VN"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.google.com/search?q=benh+vi%E1%BB%87n+long+kh%C3%A1nh&sca_esv=75c9dacffc41c098&hl=vi&sxsrf=AE3TifPnDH4oo6RJhPUbT4oBoTKTPZYabw%3A1754959742265&source=hp&ei=fo-aaLGSDoGcseMPldWiGQ&iflsig=AOw8s4IAAAAAaJqdjqUHYU-zfNVcTQFZfYhIx6mZDtn8&oq=be&gs_lp=Egdnd3Mtd2l6IgJiZSoCCAAyBBAjGCcyDBAjGIAEGBMYJxiKBTIEECMYJzIWEC4YgAQYsQMY0QMYQxiDARjHARiKBTIKEAAYgAQYQxiKBTILEAAYgAQYsQMYgwEyCBAAGIAEGLEDMhAQLhiABBjRAxhDGMcBGIoFMgsQLhiABBixAxiDATILEAAYgAQYsQMYgwFIpwtQpwFY7gNwAXgAkAEAmAF_oAHnAaoBAzAuMrgBA8gBAPgBAZgCA6AC9wGoAgrCAgcQIxgnGOoCwgIKECMYgAQYJxiKBcICDhAAGIAEGLEDGIMBGIoFmAME8QUfya7OOm9pFJIHAzEuMqAHwhmyBwMwLjK4B_IBwgcDMi0zyAcM&sclient=gws-wiz"
+              ><i class="fab fa-google"></i
+            ></a>
+          </div>
+          <div class="topbar-right">
+            <span
+              ><i class="fa fa-map-marker-alt"></i> Số 911 Đường 21/4, phường
+              Bình Lộc, tỉnh Đồng Nai</span
+            >
+            <span><i class="fa fa-envelope"></i> benhviendkkvlk@gmail.com</span>
+            <span
+              ><i class="fa fa-phone"></i> 0251.3877.236 - 0916.677.236</span
+            >
+          </div>
+        </div>
+
+        <!-- 🔹 Header -->
+        <header class="header">
+          <div class="logo">
+            <a href="./index.html"
+              ><img src="./icon/logo-8483_189x189.png" alt="Logo Bệnh viện"
+            /></a>
+            <div>
+              BỆNH VIỆN ĐA KHOA KHU VỰC LONG KHÁNH<br />
+              <span>An Toàn - Hiệu Quả - Thân Thiện</span>
+            </div>
+          </div>
+          <nav class="nav">
+            <a href="./index.html">Trang chủ</a>
+            <a href="./gioithieu.html">Giới thiệu</a>
+            <a href="./phongban.html">Phòng Ban</a>
+            <a href="./tintuc.html">Tin Tức</a>
+            <a href="./dichvu.html">Dịch Vụ</a>
+            <a href="./hotro.html">Hỗ Trợ</a>
+            <a href="./lienhe.html">Liên Hệ</a>
+          </nav>
+        </header>
+
+        <!-- 🔹 Banner -->
+        <div class="banner">
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
+          <div class="banner-text">
+            <h1>Chào mừng đến với Bệnh viện Long Khánh</h1>
+            <p>
+              Chúng tôi cam kết chăm sóc sức khỏe bạn toàn diện, tận tâm và
+              chuyên nghiệp.
+            </p>
+            <a href="./gioithieu.html"><button class="btn">Xem thêm</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const banner = document.querySelector(".banner");
+      const images = [
+        "./image/939062499797271.jpg",
+        "./image/203437563291418.jpg",
+        "./image/banner3.jpg",
+      ];
+
+      let current = 0;
+      let interval;
+
+      function changeBanner(index) {
+        current = (index + images.length) % images.length;
+        banner.style.backgroundImage = `url('${images[current]}')`;
+      }
+
+      function startAutoSlide() {
+        interval = setInterval(() => changeBanner(current + 1), 5000);
+      }
+
+      function stopAutoSlide() {
+        clearInterval(interval);
+      }
+
+      document.querySelector(".prev").onclick = () => {
+        stopAutoSlide();
+        changeBanner(current - 1);
+        startAutoSlide();
+      };
+
+      document.querySelector(".next").onclick = () => {
+        stopAutoSlide();
+        changeBanner(current + 1);
+        startAutoSlide();
+      };
+
+      changeBanner(current);
+      startAutoSlide();
+    </script>
+
+    <div class="container">
+      <section class="stats-section">
+        <div class="stat-box">
+          <i class="fas fa-user-md"></i>
+          <h2 class="counter" data-target="3297">0</h2>
+          <p>Bệnh nhân</p>
+        </div>
+        <div class="stat-box">
+          <i class="fas fa-hospital"></i>
+          <h2 class="counter" data-target="378">0</h2>
+          <p>Năm hoạt động</p>
+        </div>
+        <div class="stat-box">
+          <i class="fas fa-user-nurse"></i>
+          <h2 class="counter" data-target="400">0</h2>
+          <p>Nhân viên công tác</p>
+        </div>
+        <div class="stat-box">
+          <i class="fas fa-ambulance"></i>
+          <h2 class="counter" data-target="30">0</h2>
+          <p>Khoa phòng</p>
+        </div>
+      </section>
+    </div>
+    <section class="services">
+      <h2 class="section-title">Dịch vụ nổi bật</h2>
+      <div class="service-list">
+        <div class="service-item">
+          <i class="fas fa-stethoscope"></i>
+          <h3>Khám tổng quát</h3>
+          <p>Kiểm tra sức khỏe định kỳ, phát hiện bệnh sớm.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-vials"></i>
+          <h3>Xét nghiệm</h3>
+          <p>Trang thiết bị hiện đại, kết quả nhanh chóng.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-user-injured"></i>
+          <h3>Phẫu thuật</h3>
+          <p>Đội ngũ bác sĩ tay nghề cao, an toàn & hiệu quả.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-ambulance"></i>
+          <h3>Cấp cứu 24/7</h3>
+          <p>Luôn sẵn sàng tiếp nhận và hỗ trợ mọi tình huống.</p>
+        </div>
+      </div>
+      <div class="service-list">
+        <a href="./dichvu.html" class="btn">Xem thêm</a>
+      </div>
+    </section>
+    <section class="news">
+      <h2 class="section-title">Tin tức & Sự kiện</h2>
+      <div class="news-list">
+        <div class="news-item">
+          <img src="./image/203437563291418.jpg" alt="Tin tức 1" />
+          <div class="news-content">
+            <h3>Ngày hội hiến máu nhân đạo</h3>
+            <p>
+              Bệnh viện Long Khánh tổ chức thành công chương trình hiến máu với
+              sự tham gia của hơn 300 người.
+            </p>
+            <a href="#" class="read-more">Xem thêm</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="./image/939062499797271.jpg" alt="Tin tức 2" />
+          <div class="news-content">
+            <h3>Khám sức khỏe miễn phí cho người cao tuổi</h3>
+            <p>
+              Hơn 500 lượt khám miễn phí được thực hiện trong chương trình chăm
+              sóc người già tại địa phương.
+            </p>
+            <a href="#" class="read-more">Xem thêm</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="./image/203437563291418.jpg" alt="Tin tức 3" />
+          <div class="news-content">
+            <h3>Đưa vào hoạt động hệ thống xét nghiệm tự động</h3>
+            <p>
+              Thiết bị mới giúp nâng cao chất lượng chẩn đoán và giảm thời gian
+              chờ đợi cho bệnh nhân.
+            </p>
+            <a href="#" class="read-more">Xem thêm</a>
+          </div>
+        </div>
+      </div>
+      <div class="news-list">
+        <a href="./tintuc.html" class="btn">Xem thêm</a>
+      </div>
+    </section>
+    <section class="video-section">
+      <h2 class="section-title">Video giới thiệu</h2>
+      <div class="video-container">
+        <div class="video-box">
+          <iframe
+            src="./video/iLoveYt.net_YouTube_BENH-VIEN-DA-KHOA-KHU-VUC-LONG-KHANH-LON_Media_m5qtaTsqr0M_001_1080p.mp4"
+            title="Giới thiệu Bệnh viện Long Khánh"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-description">
+          <h3>Bệnh viện Đa khoa Khu vực Long Khánh</h3>
+          <p>
+            Cùng theo dõi video giới thiệu tổng quan về cơ sở vật chất, đội ngũ
+            y bác sĩ, và các dịch vụ nổi bật của bệnh viện chúng tôi.
+          </p>
+          <a href="./gioithieu.html" class="btn">Xem thêm video</a>
+        </div>
+      </div>
+    </section>
+    <section class="map-section">
+      <h2 class="section-title">Bản đồ chỉ đường</h2>
+      <p>Địa chỉ: Số 911 Đường 21/4, phường Bình Lộc, tỉnh Đồng Nai</p>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.303197680055!2d107.21325897590711!3d10.940453956144982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174f949145c0e89%3A0x5061586df9e0989f!2zQuG7h25oIFZp4buHbiDEkGEgS2hvYSBLaHUgVuG7sWMgTG9uZyBLaMOhbmg!5e0!3m2!1svi!2s!4v1754980952214!5m2!1svi!2s"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- Cột 1: About Us -->
+        <div class="footer-about">
+          <h3>Liên hệ</h3>
+          <p>
+            <i class="fa fa-map-marker-alt"></i> Số 911 Đường 21/4, phường Bình
+            Lộc, tỉnh Đồng Nai
+          </p>
+          <p><i class="fas fa-phone-alt"></i> 0251.3877.236 - 0916.677.236</p>
+          <p><i class="fas fa-envelope"></i> benhviendkkvlk@gmail.com</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="Enter your e-mail" />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+        <!-- Cột 2: Latest Tweet -->
+        <div class="footer-tweet">
+          <h3>Tuyển dụng</h3>
+          <div class="tweet"></div>
+        </div>
+
+        <!-- Cột 3: Instagram -->
+        <div class="footer-instagram">
+          <h3>Facebook</h3>
+          <div class="insta-grid">
+            <img src="https://picsum.photos/70?random=1" alt="" />
+            <img src="https://picsum.photos/70?random=2" alt="" />
+            <img src="https://picsum.photos/70?random=3" alt="" />
+            <img src="https://picsum.photos/70?random=4" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Dòng cuối -->
+      <div class="footer-bottom">
+        <nav class="footer-nav">
+          <a href="./index.html">Trang Chủ</a>
+          <a href="./gioithieu.html">Giới Thiệu</a>
+          <a href="./phongban.html">Phòng Ban</a>
+          <a href="./tintuc.html">Tin Tức</a>
+          <a href="./dichvu.html">Dịch Vụ</a>
+          <a href="./hotro.html">Hỗ Trợ</a>
+          <a href="./lienhe.html">Liên Hệ</a>
+        </nav>
+        <div class="copyright">
+          © 2025 Bệnh viện Long Khánh | Thiết kế bởi bạn
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
